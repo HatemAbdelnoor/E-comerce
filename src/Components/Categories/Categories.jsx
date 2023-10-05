@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { Card } from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom"
+import Loding from './../Loding/Loding';
+import { Helmet } from 'react-helmet';
 export default function Categories(){
 function getCategories(){
 
@@ -21,8 +23,11 @@ function getCategories(){
     setCategories();},[]);
     const [CategoriesDitails, setCategoriesDitails] = useState(null);
     return<> 
+<Helmet>
+        <title>  Categories </title>
 
-    <div className="containar col-md-12 d-flex justify-content-center flex-wrap  p-2">
+    </Helmet>
+{  CategoriesDitails !== null  ? <div className="containar col-md-12 d-flex justify-content-center flex-wrap  p-2">
     {CategoriesDitails?.data.map((CategoriesDitails, index) => (
         <div key={index} className="row col-md-3 p-3">
          <Link to={`/CategoryDetails/${CategoriesDitails._id}`} >
@@ -35,7 +40,7 @@ function getCategories(){
 
        </div>
     ))}
-    </div>
-
+    </div>: <Loding/>
+}
 </>
 }

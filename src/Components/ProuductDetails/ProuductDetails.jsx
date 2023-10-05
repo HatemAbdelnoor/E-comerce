@@ -5,6 +5,7 @@ import axios from 'axios';
 import Slider from 'react-slick';
 import CartContextProvider, { CartContext } from '../../Context/CartContext';
 import { toast } from 'react-hot-toast';
+import Loding from '../Loding/Loding.jsx';
 export default function ProuductDetails() {
   let {addToCart} = useContext(CartContext)
 
@@ -31,10 +32,11 @@ export default function ProuductDetails() {
 
 const [proudctDetails, setproudctDetails] = useState(null);
   let params = useParams();
-  console.log(params.id);
+  console.log(params);
 async function getproudctdetails(id) { 
 
 let {data}= await axios.get(`https://route-ecommerce.onrender.com/api/v1/products/${id}`)
+
 
 setproudctDetails (data.data);
 }
@@ -46,7 +48,7 @@ getproudctdetails(params.id);
  
   return <>
  
-  <div className="container  ">
+ {  proudctDetails !==null ? <div className="container  ">
     <div className="row">
       <div className="col-md-4 p-5">
         <Slider {...settings}>
@@ -69,6 +71,7 @@ getproudctdetails(params.id);
       </div>
   
 
+ : <Loding/>}
   </>
 }
 

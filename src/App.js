@@ -21,6 +21,7 @@ import  { Toaster } from 'react-hot-toast';
 import CounterContextProvider from './Context/CounterContext';
 import CartContextProvider from './Context/CartContext';
 import CategoryDetails from './Components/CategoryDetails/CategoryDetails';
+import BrandsDetails from './Components/BrandsDetails/BrandsDetails';
 
 
 function App() { 
@@ -52,8 +53,10 @@ let routers = createBrowserRouter ([
     { path:'', element:<Layout  userDate={userDate} setuUserDate={setuUserDate}   />, children:[
     {index:true, element: <ProtectedRoute> <Home/></ProtectedRoute>},
     {path:"Proudcts", element : <ProtectedRoute> <Proudcts/>  </ProtectedRoute> },
-    {path:`ProuductDetails/:id`, element :   <ProtectedRoute><ProuductDetails/> </ProtectedRoute>   },
+    {path:`ProuductDetails/:id/:slug`, element :   <ProtectedRoute><ProuductDetails/> </ProtectedRoute>   },
+    {path:`ProuductDetails/:id/`, element :   <ProtectedRoute><ProuductDetails/> </ProtectedRoute>   },
     {path:`CategoryDetails/:id`, element :   <ProtectedRoute><CategoryDetails/> </ProtectedRoute>   },
+    {path:`BrandsDetails/:id`, element :   <ProtectedRoute><BrandsDetails/> </ProtectedRoute>   },
     {path:"Cart",element:<ProtectedRoute><Cart/> </ProtectedRoute>},
     {path:"Footer",element:<Footer/>},
     {path:"login",element:<Login  saveUserData={saveUserData}  />},
@@ -65,6 +68,7 @@ let routers = createBrowserRouter ([
     {path:"ProuductDetails", element: <ProtectedRoute> <ProudctDetails/> </ProtectedRoute>},
        
   ]}
+
 
 ])
 

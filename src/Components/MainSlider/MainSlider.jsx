@@ -8,8 +8,8 @@ import skiderimg3 from "./slider-image-3.jpeg"
 function UncontrolledExample() {
   
   return <> 
-  <div className="container-fluid justify-content-center align-items-center" >
-    <div className="row col-md-10 d-flex  ">
+  <div className="  container-fluid col-md-12 d-block w-50 h-50 " >
+    <div className="row col-md-12 d-flex  ">
     <Carousel>
       <Carousel.Item>
         <img

@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Loding from '../Loding/Loding.jsx';
-import styles from './FeaturedProducts.module.css';
+import './FeaturedProducts.css';
 import axios  from 'axios';
 import { Link } from 'react-router-dom';
 import { createBrowserRouter } from 'react-router-dom';
 import CartContextProvider, { CartContext } from '../../Context/CartContext';
 import { toast } from 'react-hot-toast';
-
 
 export default function FeaturedProducts() {
   let {addToCart} = useContext(CartContext)
@@ -41,21 +40,21 @@ return <>
     <div className="col-md-12 ">
       <div className="card">
         <div className="card-header">
-          <h3 className="card-title text-center">Featured Products</h3>
+          <h3 className="card-title text-center"> Products</h3>
         </div>
         <div className="card-body row col-md-12 d-block d-flex flex-wrap align-content-center justify-content-center  ">
         
   
-          <div className="row col-md-11 d-block d-flex flex-wrap justify-content-center">
+          <div className="row col-md-11  d-block d-flex flex-wrap justify-content-center">
             {products.map((product, index) => (
-              <div  id='proudct-section' className="col-md-4 col-lg-2  col-sm-6   product" key={index}>
-                <Link to={`/ProuductDetails/${product._id}`} >
+              <div  id='proudct-section' className="col-xs-6 col-md-4 col-xl-2 col-sm-4  product" key={index}>
+                <Link to={`/ProuductDetails/${product._id}/${product.slug}`} >
               
                 <div className="card">
                   <div className="card-header">
                     
-                  <h5 className="card-title">{product.title.split(' ').slice(0,2).join(' ')}</h5>
-                  <span className='text-success' >{product.subcategory.name}</span>
+                  <h5 className="    text-center  ">{product.title.split(' ').slice(0,2).join(' ')}</h5>
+                  <h6 className='text-success' >{product.name}</h6>
                   </div>
                   <div className="card-body">
                    
@@ -72,7 +71,7 @@ return <>
                 </div>
                 </Link>
                 <button onClick={()=>addProudctToCart(product._id)}  className='btn  btn-success w-100'>add proudct</button>
-  
+    
               </div>
             ))}
           </div>

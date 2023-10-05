@@ -3,6 +3,10 @@ import styles from "./Brands.module.css";
 import { useEffect } from "react";
 import { Card } from "react-bootstrap";
 import axios from "axios";
+import Loding from "../Loding/Loding.jsx";
+import BrandsDetails from './../BrandsDetails/BrandsDetails';
+import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 export default function Brands(){
 function getBrands(){
@@ -21,16 +25,22 @@ function getBrands(){
     setBrands();},[]);
     const [BrandsDitails, setBrandsDitails] = useState(null);
     return<> 
-    <div className="containar d-flex justify-content-center flex-wrap ">
+    <Helmet>
+        <title> Brand </title>
+
+    </Helmet>
+{  BrandsDitails !==null?      <div className="containar d-flex justify-content-center flex-wrap ">
     {BrandsDitails?.data.map((BrandsDitails, index) => (
         <div key={index} className="row col-md-3  -1  ">
+            <Link  to={`/BrandsDetails/${BrandsDitails._id}`}>
        <Card>
         <Card.Img variant="top" src={BrandsDitails?.image}/>
         <Card.Header className="text-center">{BrandsDitails?.name}</Card.Header>
        </Card>
+       </Link>
        </div>
     ))}
-    </div>
+    </div> : <Loding/>}
 
 </>
 }
